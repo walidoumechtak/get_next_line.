@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:19 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/11 12:59:00 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/11 18:57:47 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char    *read_line(int fd, char *join)
     
     buf = (char *) malloc(BUFFER_SIZE + 1);
     i = read(fd,buf,BUFFER_SIZE);
+    buf[i] = '\0';
     if (i < 0)
         return(free_it(&buf));
     if (i == 0 && buf[0])
@@ -108,30 +109,79 @@ char    *read_line(int fd, char *join)
         i = read(fd, buf, BUFFER_SIZE);
         if (i < 0)
             return (free_it(&buf));
+        buf[i] = '\0';
         join = ft_strjoin(join, buf);
     }
     return (join);
 }
 
-char    *get_line(int fd, char *buf)
+char    *get_line(char *buf)
 {
-    
+    char    *new_line;
+    int i;
+    int j;
+
+    if (!buf)
+        return (NULL);
+    i = 0;
+    while (buf[i] != '\n')
+        i++;
+    new_line = (char *) malloc(i + 1);
+    if (!new_line)
+        return (NULL);
+    j = 0;
+    // while (buf[j] != '\n')
+    while (j <= i)
+    {
+        new_line[j] = buf[j];
+        j++;
+    }
+    new_line[j] = '\0';
+    return (new_line);
+}
+
+char    *get_the_rest(char *buf)
+{
+    char *rest;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (buf[i] && buf[i] != '\n')
+        i++;
+    if (!buf[i])
+        return (free_it(&buf));
+    i++;
+    rest = ft_strdup(buf + i);
+    free_it(&buf);
+    return (rest);
 }
 
 char    *get_next_line(int fd)
 {
-    static char    *join;
-    char    *buf;
+    char    *join;
+    static char    *buf;
     char    *len;
     
+    join = NULL;
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
-    join = malloc(1);
-    if (!join)
-        return (NULL);
-    join[0] = '\0';
+    // if (!join)
+    // {
+    //     join = malloc(1);
+    //     if (!join)
+    //         return (NULL);
+    //     join[0] = '\0';
+    // }
     buf = read_line(fd,join);
-    len = 
+    len = get_line(buf);
+    //printf("-- %s --\n", buf);
+    buf = get_the_rest(buf);
+    //printf("***%s***", buf);
+    //printf("***%s***", len);
+    
+    return (len);
 }
 
 
@@ -145,15 +195,15 @@ int main()
     char *e;
     
     
-    fd = open("walid.txt", O_RDONLY);
-    a = get_next_line(fd);
-    printf("%s", a);
-    b = get_next_line(fd);
-    printf("%s", b);
-    c = get_next_line(fd);
-    printf("%s", c);
-    d = get_next_line(fd);
-    printf("%s", d);
-    e = get_next_line(fd);
-    printf("%s", e);
-}
+     fd = open("walid.txt", O_RDONLY);
+     a = get_next_line(fd);
+     printf("%s", a);
+     //b = get_next_line(fd);
+     //printf("%s", b);
+     // c = get_next_line(fd);
+     // printf("%s", c);
+//     d = get_next_line(fd);
+//     printf("%s", d);
+//     e = get_next_line(fd);
+//     printf("%s", e);
+ }

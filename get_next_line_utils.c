@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:23 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/11 09:49:40 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:31:34 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,23 @@ int	ft_strchr(const char *s, int c)
 	return (-1);
 }
 
-
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strdup(const char *s1)
 {
 	char	*ptr;
-	size_t	j;
-	size_t	len_str;
+	char	*str;
+	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
-	len_str = ft_strlen(s);
-	if (start >= len_str)
-		return (ft_strdup(""));
-	if (len_str - start < len)
-		len = len_str - start;
-	ptr = malloc((len + 1) * sizeof(char));
+	str = (char *)s1;
+	i = 0;
+	ptr = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
-	j = 0;
-	while (j < len)
+	while (i < ft_strlen(str) && s1)
 	{
-		ptr[j] = ((char *)s)[start];
-		start++;
-		j++;
+		ptr[i] = str[i];
+		i++;
 	}
-	ptr[j] = '\0';
+	ptr[i] = '\0';
 	return (ptr);
 }
 
@@ -79,12 +70,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = -1;
 	j = -1;
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	if (s1 == NULL)
-		return (ft_strdup(s1));
-	if (s2 == NULL)
 		return (ft_strdup(s2));
+	if (s2 == NULL)
+		return (ft_strdup(s1));
 	ptr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
