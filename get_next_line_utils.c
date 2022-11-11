@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:23 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/11 16:31:34 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/11 22:47:03 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	while (s1[++i])
 		ptr[++j] = s1[i];
-	i = 0;
+	i = -1;
 	while (s2[++i])
 		ptr[++j] = s2[i];
 	ptr[++j] = '\0';
