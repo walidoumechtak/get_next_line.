@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:19 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/11 22:48:56 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/12 08:20:40 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char    *get_line(char *buf)
     if (!buf)
         return (NULL);
     i = 0;
-    while (buf[i] != '\n')
+    while (buf[i] != '\n' && buf[i])
         i++;
     new_line = (char *) malloc(i);
     if (!new_line)
@@ -148,6 +148,8 @@ char    *get_the_rest(char *buf)
 
     i = 0;
     j = 0;
+    if (!buf)
+        return (NULL);
     while (buf[i] && buf[i] != '\n')
         i++;
     if (!buf[i])
@@ -169,40 +171,40 @@ char    *get_next_line(int fd)
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
     temp = read_line(fd,join);
-    printf("////%s//// \n",temp);
+    //printf("temp :::////%s//// \n",temp);
     buf = ft_strjoin(buf,temp);
-    printf("---%s---\n", buf);
+    //printf("buf :::---%s---\n", buf);
     len = get_line(buf);
-    printf("***%s***", len);
+    //printf("len :::***%s***\n", len);
     buf = get_the_rest(buf);
-    printf("+++%s+++", buf);
+    //printf("buf :::+++%s+++\n", buf);
     
     return (len);
 }
 
 
-int main()
-{
-    int fd;
-    char *a;
-    char *b;
-    char *c;
-    char *d;
-    char *e;
+// int main()
+// {
+//     int fd;
+//     char *a;
+//     char *b;
+//     char *c;
+//     char *d;
+//     char *e;
     
-    
-     fd = open("walid.txt", O_RDONLY);
-     a = get_next_line(fd);
-     //printf("%s", a);
-     printf("\n\n\n\n");
-     b = get_next_line(fd);
-     //printf("%s", b);
-     printf("\n\n\n\n");
-     c = get_next_line(fd);
-     //printf("%s", c);
-     printf("\n\n\n\n");
-     d = get_next_line(fd);
-    //printf("%s", d);
-//     e = get_next_line(fd);
+//         //printf("\n\n\n\n");
+//      fd = open("walid.txt", O_RDONLY);
+//      a = get_next_line(fd);
+//      printf("%s", a);
+//     //printf("\n\n\n\n");
+//      b = get_next_line(fd);
+//      printf("%s", b);
+//      //printf("\n\n\n\n");
+//      c = get_next_line(fd);
+//      printf("%s", c);
+//      //printf("\n\n\n\n");
+//      d = get_next_line(fd);
+//     printf("%s", d);
+//      e = get_next_line(fd);
 //     printf("%s", e);
- }
+//  }
