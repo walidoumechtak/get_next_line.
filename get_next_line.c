@@ -6,11 +6,12 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:19 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/12 14:34:54 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/12 22:47:58 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <string.h>
 
 char	*free_it(char **s1)
 {
@@ -34,7 +35,7 @@ char    *read_line(int fd, char *join)
         return (NULL);
     i = read(fd,buf,BUFFER_SIZE);
     if (i <= 0)
-        return (free_it(&buf));
+        return (free(buf), NULL);
     while (i > 0)
     {
         if (i < 0)
@@ -47,29 +48,11 @@ char    *read_line(int fd, char *join)
             break ;
         i = read(fd,buf,BUFFER_SIZE);
     }
-    free_it(&buf);
+    free(buf);
     return (join);
-    
-//     i = read(fd,buf,BUFFER_SIZE);
-//     buf[i] = '\0';
-//    if (i <= 0)
-//         return(free_it(&buf));
-//     join = ft_strjoin(join, buf);
-//     while (ft_strchr(join, '\n') == -1 && i > 0)
-//     {
-//         i = read(fd, buf, BUFFER_SIZE);
-//         if (i < 0)
-//             return (free_it(&buf));
-//         buf[i] = '\0';
-//         tmp = ft_strjoin(join, buf);
-//         free(join);
-//         join = tmp;
-//     }
-//     free_it(&buf);
-//     return (join);
 }
 
-char    *get_line(char *buf)
+char    *get_the_line(char *buf)
 {
     char    *new_line;
     int i;
@@ -90,29 +73,27 @@ char    *get_line(char *buf)
         j++;
     }
     new_line[j] = '\0';
-    // free(buf);
     return (new_line);
 }
 
 char    *get_the_rest(char *buf)
 {
     char *rest;
+    //char *tmp;
     int i;
-    int j;
-
+    
     i = 0;
-    j = 0;
     if (!buf)
-        return (free_it(&buf));
+        return (free(buf), NULL);
     while (buf[i] && buf[i] != '\n')
         i++;
     if (!buf[i])
-        return (free_it(&buf));
+        return (free(buf), NULL);
     i++;
     rest = ft_strdup(buf + i);
+    free(buf);
     if (rest[0] == '\0') // hadi dartha fach tandiro new line f lfile bohdo
         return (NULL);
-    free_it(&buf);
     return (rest);
 }
 
@@ -125,15 +106,17 @@ char    *get_next_line(int fd)
     
     //join = NULL;
     if (fd < 0 || BUFFER_SIZE <= 0)
-        return (free_it(&buf));
+        return (free(buf), NULL);
     temp = read_line(fd,NULL);
     //printf("temp :::////%s//// \n",temp);
     buf = ft_strjoin(buf,temp);
     free_it(&temp);
     //printf("buf :::---%s---\n", buf);
-    len = get_line(buf);
+    len = get_the_line(buf);
     //printf("len :::***%s***\n", len);
     buf = get_the_rest(buf);
+    
+    
     //printf("buf :::+++%s+++\n", buf);
     
     return (len);

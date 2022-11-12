@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:26 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/12 10:32:54 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/12 22:31:00 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	ft_strchr(const char *s, int c);
 size_t ft_strlen(const char *s);
 char    *free_it(char **s1);
 char	*ft_strdup(const char *s1);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

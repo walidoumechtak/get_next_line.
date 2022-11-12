@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:23 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/11 22:47:03 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/12 22:31:13 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,25 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ptr[++j] = s2[i];
 	ptr[++j] = '\0';
 	return (ptr);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	const char	*sr;
+	char		*p;
+	size_t		i;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	sr = src;
+	p = dst;
+	if (p == sr)
+		return (p);
+	i = 0;
+	while (i < n)
+	{
+		p[i] = sr[i];
+		i++;
+	}
+	return (dst);
 }
