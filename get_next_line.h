@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:26 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/12 08:15:33 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/12 10:32:54 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 9
+#  define BUFFER_SIZE 1000000
 # endif
 
 char	*get_next_line(int fd);
