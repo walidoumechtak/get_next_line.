@@ -6,11 +6,11 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 13:20:28 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 13:24:34 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 13:35:29 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*free_it(char *s1, char *s2)
 {
