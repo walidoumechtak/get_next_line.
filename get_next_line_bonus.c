@@ -6,18 +6,11 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 13:20:28 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 17:22:24 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:27:02 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-void	*free_it(char *s1, char *s2)
-{
-	free(s1);
-	free(s2);
-	return (NULL);
-}
 
 char	*read_line(int fd, char *buf)
 {

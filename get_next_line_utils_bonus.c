@@ -6,11 +6,18 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:23 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 13:35:21 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:27:08 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+void	*free_it(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	return (NULL);
+}
 
 size_t	ft_strlen(const char *s)
 {
