@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 10:03:19 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 13:21:52 by woumecht         ###   ########.fr       */
+/*   Created: 2022/11/13 13:20:28 by woumecht          #+#    #+#             */
+/*   Updated: 2022/11/13 13:24:34 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,39 +93,13 @@ char	*get_the_rest(char *buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	*buf[OPEN_MAX];
 	char		*len;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (free(buf), NULL);
-	buf = read_line(fd, buf);
-	len = get_the_line(buf);
-	buf = get_the_rest(buf);
+	buf[fd] = read_line(fd, buf);
+	len[fd] = get_the_line(buf);
+	buf[fd] = get_the_rest(buf);
 	return (len);
 }
-
-// int main()
-// {
-//     int fd;
-//     char *a;
-//     char *b;
-//     char *c;
-//     char *d;
-//     char *e;
-//         //printf("wawawa");
-//         //printf("\n\n\n\n");
-//      fd = open("walid.txt", O_RDONLY);
-//       a = get_next_line(fd);
-//       //printf("%s", a);
-//     //printf("\n\n\n\n");
-//      b = get_next_line(fd);
-//     //printf("%s", b);
-//      //printf("\n\n\n\n");
-//      c = get_next_line(fd);
-//      //printf("%s", c);
-//      //printf("\n\n\n\n");
-// //      d = get_next_line(fd);
-// //     printf("%s", d);
-// //      e = get_next_line(fd);
-// //     printf("%s", e);
-// }

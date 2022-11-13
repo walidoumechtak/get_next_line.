@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:26 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/12 22:31:00 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 13:22:05 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000000
+#  define BUFFER_SIZE 5
 # endif
 
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
-int	ft_strchr(const char *s, int c);
-size_t ft_strlen(const char *s);
-char    *free_it(char **s1);
+int		ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+void	*free_it(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
