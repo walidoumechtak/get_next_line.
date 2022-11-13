@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 13:20:28 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 13:35:29 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:39:37 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_the_line(char *buf)
 
 	if (!buf)
 		return (NULL);
-	if (buf[0] == '\0') // hadi dartha fach tandiro new line f lfile bohdo
+	if (buf[0] == '\0')
 		return (NULL);
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
@@ -97,9 +97,9 @@ char	*get_next_line(int fd)
 	char		*len;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
-		return (free(buf), NULL);
-	buf[fd] = read_line(fd, buf);
-	len[fd] = get_the_line(buf);
-	buf[fd] = get_the_rest(buf);
+		return (free(buf[fd]), NULL);
+	buf[fd] = read_line(fd, buf[fd]);
+	len = get_the_line(buf[fd]);
+	buf[fd] = get_the_rest(buf[fd]);
 	return (len);
 }

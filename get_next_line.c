@@ -6,7 +6,7 @@
 /*   By: woumecht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:03:19 by woumecht          #+#    #+#             */
-/*   Updated: 2022/11/13 13:21:52 by woumecht         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:55:14 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_the_line(char *buf)
 
 	if (!buf)
 		return (NULL);
-	if (buf[0] == '\0') // hadi dartha fach tandiro new line f lfile bohdo
+	if (buf[0] == '\0')
 		return (NULL);
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
@@ -103,29 +103,3 @@ char	*get_next_line(int fd)
 	buf = get_the_rest(buf);
 	return (len);
 }
-
-// int main()
-// {
-//     int fd;
-//     char *a;
-//     char *b;
-//     char *c;
-//     char *d;
-//     char *e;
-//         //printf("wawawa");
-//         //printf("\n\n\n\n");
-//      fd = open("walid.txt", O_RDONLY);
-//       a = get_next_line(fd);
-//       //printf("%s", a);
-//     //printf("\n\n\n\n");
-//      b = get_next_line(fd);
-//     //printf("%s", b);
-//      //printf("\n\n\n\n");
-//      c = get_next_line(fd);
-//      //printf("%s", c);
-//      //printf("\n\n\n\n");
-// //      d = get_next_line(fd);
-// //     printf("%s", d);
-// //      e = get_next_line(fd);
-// //     printf("%s", e);
-// }
